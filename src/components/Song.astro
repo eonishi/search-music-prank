@@ -1,0 +1,26 @@
+---
+interface Props {
+    tittle: string;
+    artists: string;
+    cover: string;
+}
+
+const { tittle, artists, cover } = Astro.props;
+---
+
+<div class="flex justify-start items-center gap-6 px-2 rounded-xl bg-green-300/10 backdrop-blur-lg hover:bg-green-300/30">
+    <img
+        class="w-[50px] h-auto rounded-lg"
+        src={cover}
+        alt=`Portada del disco del track ${tittle}`
+        />
+    <div class="font-normal">
+        <h2 class="text-2xl text-gray-300  hover:underline">
+            <a href="/">{tittle}</a>
+        </h2>
+        <h2 class="text-lg text-gray-300">
+	    	{artists}
+        </h2>
+    </div>
+
+</div>
