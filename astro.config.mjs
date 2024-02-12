@@ -1,4 +1,11 @@
 import { defineConfig } from 'astro/config';
+import htmx from "astro-htmx";
+import tailwind from "@astrojs/tailwind";
+
+import react from "@astrojs/react";
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  output: 'server',
+  integrations: [tailwind(), htmx(), react()]
+});
