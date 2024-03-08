@@ -1,0 +1,28 @@
+---
+import MediaButtons from "./MediaButtons.jsx";
+import Next from "../icons/Next.astro";
+import Previous from "../icons/Previous.astro";
+---
+
+<div
+  class="sticky bottom-0 w-full h-16 bg-zinc-800/30 backdrop-blur-lg z-30
+            flex items-center content-center justify-between px-6 bg-opacity-50"
+>
+  <div class="flex items-center space-x-4">
+    <img src="/cloud.svg" alt="spotify" class="w-8 h-8" />
+    <div class="flex flex-col">
+      <p class="text-sm font-bold">Now Playing</p>
+      <p class="text-xs">Song Title</p>
+    </div>
+  </div>
+
+  <div class="flex flex-row gap-4">
+    <Next className="w-4"/>
+    <MediaButtons client:load />
+    <Previous className="w-4"/>
+  </div>
+
+  <div class="flex items-center space-x-4"></div>
+</div>
+
+<script></script>
