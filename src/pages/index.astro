@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Buscador from "../components/Buscador.astro";
 import Player from "../components/Player.astro";
 import ListOfSongs from "../components/ListOfSongs.astro";
+import PrankVideo from "../components/PrankVideo";
 
 ---
 
@@ -12,12 +13,14 @@ import ListOfSongs from "../components/ListOfSongs.astro";
 		<h1 class="text-balance m-10">
 			Buscá tu canción favorita
 		</h1>
-
+		
 		<Buscador />
 		<ListOfSongs />
 		
 	</main>
 	
+	<Player />
+	<PrankVideo client:load/>
 </Layout>
 
 <style>
