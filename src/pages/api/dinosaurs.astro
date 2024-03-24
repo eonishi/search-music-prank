@@ -1,0 +1,15 @@
+---
+const res = await fetch(
+  "https://dinosaur-facts-api.shultzlab.com/dinosaurs/random"
+);
+const {Name, Description} = await res.json();
+---
+
+<span>
+  <h1 class="text-4xl font-bold">
+    {Name}
+  </h1>
+  <p class="text-lg">
+    {Description}
+  </p>
+</span>
