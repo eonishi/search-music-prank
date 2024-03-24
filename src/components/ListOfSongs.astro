@@ -1,19 +1,10 @@
 ---
 import result from "../json/searchRes.json";
 import Song from "../components/Song.astro";
+import Loading from "../components/Loading.astro";
 
-const allSongs = result.tracks.items
-
+const allSongs = result.tracks.items;
 ---
 
-<article class="flex flex-col gap-2">
-    {
-        allSongs.map((song) => (
-            <Song 
-                tittle={song.data.name}
-                artists={song.data.artists.items[0].profile.name}
-                cover={song.data.albumOfTrack.coverArt.sources[0].url}  
-            />
-        ))
-    }
+<article id="songs-results" class="flex flex-col gap-2">
 </article>

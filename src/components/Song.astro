@@ -6,21 +6,23 @@ interface Props {
 }
 
 const { tittle, artists, cover } = Astro.props;
+
+import AnchorState from "./AnchorState";
+import ImageState from "./ImageState";
 ---
 
 <div
-  class="flex justify-start items-center gap-6 px-2 rounded-xl bg-cyan-300/10 backdrop-blur-lg hover:bg-cyan-300/30 shadow-2xl transition-all"
+  class="flex justify-start items-center gap-4 px-2 py-1 rounded-xl
+        bg-cyan-300/10 backdrop-blur-lg hover:bg-cyan-300/30
+        shadow-2xl transition-all"
 >
-  <img
-    class="play-button w-[50px] h-auto rounded-lg aspect-square hover:cursor-pointer hover:saturate-200 hover:scale-105 active:scale-95"
-    src={cover}
-    alt=`Portada del disco del track ${tittle}`
-  />
-  <div class="font-normal">
-    <h2 class="text-2xl text-gray-300 hover:underline hover:cursor-pointer">
-      <a class="play-button">{tittle}</a>
-    </h2>
-    <h2 class="text-lg text-gray-300">
+  <ImageState client:load cover={cover} tittle={tittle} artists={artists}/>
+
+  <div class="flex-col justify-around">
+    <AnchorState client:load cover={cover} artists={artists}>
+      {tittle}
+    </AnchorState>
+    <h2 class="text-base text-gray-300">
       {artists}
     </h2>
   </div>

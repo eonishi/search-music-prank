@@ -4,39 +4,37 @@ import Buscador from "../components/Buscador.astro";
 import Player from "../components/Player.astro";
 import ListOfSongs from "../components/ListOfSongs.astro";
 import PrankVideo from "../components/PrankVideo";
-
+import TextAnimatedGradient from "../components/TextAnimatedGradient";
 ---
 
 <Layout title="Encuentra tu canción preferida">
-	<main class="flex flex-col gap-4 ">
-		
-		<h1 class="text-balance m-10">
-			Buscá tu canción favorita
-		</h1>
-		
-		<Buscador />
-		<ListOfSongs />
-		
-	</main>
-	
-	<Player />
-	<PrankVideo client:load/>
+  <main class="flex flex-col gap-4 ">
+    <TextAnimatedGradient class="text-balance m-10 ">Buscá tu canción favorita</TextAnimatedGradient>
+
+    <Buscador />
+    <ListOfSongs id="songs-results"/>
+  </main>
+  
+  <Player />
+  <PrankVideo client:idle />
+  <!-- 
+-->
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	h1 {
-		font-size: 40px;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-	}
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+  h1 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+  }
 </style>
