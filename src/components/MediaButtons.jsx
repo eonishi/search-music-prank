@@ -12,10 +12,11 @@ export const Play = () => (
   </svg>
 );
 
-
 export default function MediaButtons() {
-  const { isPlaying, setIsPlaying } = usePlayerStore((state) => state);
+  const { isPlaying, setIsPlaying, currentSong} = usePlayerStore((state) => state);
+
   const handleClick = () => {
+    if (currentSong === null) return;
     setIsPlaying(!isPlaying);
   };
   return (
