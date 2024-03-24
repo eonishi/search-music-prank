@@ -1,0 +1,22 @@
+---
+import Song from "../../components/Song.astro";
+
+//const formData = await Astro.request.formData()
+//const search = formData.get('search')
+// Hacer la petición a la API con el valor de search (value del input) TODO
+
+const res = await fetch("http://localhost:4321/api/songs.json");
+const data = await res.json();
+const allSongs = data.tracks.items;
+---
+
+  {
+    allSongs.map((song: any) => (
+      <Song
+        tittle={song.data.name}
+        artists={song.data.artists.items[0].profile.name}
+        cover={song.data.albumOfTrack.coverArt.sources[0].url}
+      />
+    ))
+  }
+
