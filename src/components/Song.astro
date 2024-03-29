@@ -3,9 +3,11 @@ interface Props {
   tittle: string;
   artists: string;
   cover: string;
+  index: number;
 }
 
-const { tittle, artists, cover } = Astro.props;
+const { tittle, artists, cover, index } = Astro.props;
+const spawnDelay = `${index * 0.4}s`;
 
 import AnchorState from "./AnchorState";
 import ImageState from "./ImageState";
@@ -13,10 +15,11 @@ import ImageState from "./ImageState";
 
 <div
   class="flex justify-start items-center gap-4 px-2 py-1 rounded-xl
-        bg-cyan-300/10 backdrop-blur-lg hover:bg-cyan-300/30
-        shadow-2xl transition-all"
+        bg-cyan-300/10 backdrop-blur-lg
+        hover:bg-cyan-300/30
+        shadow-2xl opacity-0 song-effect"
 >
-  <ImageState client:load cover={cover} tittle={tittle} artists={artists}/>
+  <ImageState client:load cover={cover} tittle={tittle} artists={artists} />
 
   <div class="flex-col justify-around">
     <AnchorState client:load cover={cover} artists={artists}>
@@ -27,3 +30,21 @@ import ImageState from "./ImageState";
     </h2>
   </div>
 </div>
+
+<style define:vars={{ spawnDelay }}>
+  .song-effect {
+    animation: 0.6s ease-in-out forwards fade-in-up;
+    animation-delay: var(--spawnDelay);
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
