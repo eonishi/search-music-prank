@@ -13,7 +13,9 @@ export const Play = () => (
 );
 
 export default function MediaButtons() {
-  const { isPlaying, setIsPlaying, currentSong} = usePlayerStore((state) => state);
+  const { isPlaying, setIsPlaying, currentSong } = usePlayerStore(
+    (state) => state
+  );
 
   const handleClick = () => {
     if (currentSong === null) return;

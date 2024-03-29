@@ -1,6 +1,6 @@
 import "./PrankVideo.css";
 import usePlayerStore from "../store/usePlayerStore.ts";
-import { lazy, useEffect, useRef} from "react";
+import { useEffect, useRef } from "react";
 
 export default function PrankVideo() {
   const { isPlaying, volume } = usePlayerStore((state) => state);
@@ -44,10 +44,7 @@ export default function PrankVideo() {
         muted={true}
       ></video>
 
-      <audio
-        src="/audio.mp3"
-        ref={audioRef}
-      ></audio>
+      <audio src="/audio.mp3" ref={audioRef}></audio>
     </>
   );
 }
