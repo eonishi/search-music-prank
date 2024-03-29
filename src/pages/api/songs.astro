@@ -12,14 +12,17 @@ const option = {
   method: "GET",
   headers: {
     'X-RapidAPI-Key': api_key,
-    'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+    'X-RapidAPI-Host': 'spotify23.p.rapidapi.com',
+    "sec-fetch-mode":"cors"
+    "x-forwarded-proto":"https"
   }
 }
 
 
   const res = await fetch(url, option);
+  console.log("res", res);
+  console.log("url", url);
   const data = await res.json();
-
   console.log("data", data)
   const allSongs = data.tracks.items;
 
