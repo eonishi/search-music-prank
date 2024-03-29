@@ -19,13 +19,10 @@ const option = {
 
   const res = await fetch(url, option);
   const data = await res.json();
+
+  console.log("data", data)
   const allSongs = data.tracks.items;
 
-console.log("search:",search);
-console.log("apikey:",api_key);
-console.log("url:",url);
-console.log("headers:",option);
-console.log("allSongs:", allSongs);
 ---
 
 {
