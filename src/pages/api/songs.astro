@@ -1,13 +1,32 @@
 ---
 import Song from "../../components/Song.astro";
 
-//const formData = await Astro.request.formData()
-//const search = formData.get('search')
-// Hacer la petición a la API con el valor de search (value del input) TODO
+// Obtener el valor del input de búsqueda
+const formData = await Astro.request.formData()
+const search = formData.get('search-value')
 
-const res = await fetch("http://localhost:4321/api/songs.json");
-const data = await res.json();
-const allSongs = data.tracks.items;
+// Hacer la petición a la API con el valor de search (value del input) y obtener los datos
+const api_key = import.meta.env.API_KEY;
+const url = `https://spotify23.p.rapidapi.com/search/?q=${search}&type=tracks&offset=0&limit=10&numberOfTopResults=5`;
+const option = {
+  method: "GET",
+  headers: {
+    'X-RapidAPI-Key': api_key,
+    'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
+  }
+}
+
+let allSongs = [];
+
+try{
+  const res = await fetch(url, option);
+  const data = await res.json();
+  const allData = data.tracks.items;
+  allSongs = allData;
+}
+catch(error){
+  return Astro.redirect('/error/api-fault');
+}
 ---
 
 {

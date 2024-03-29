@@ -18,18 +18,20 @@
           d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"></path>
       </svg>
     </div>
-    <label for="s">
+    <label for="song-searching">
+      <span class="sr-only">Buscar canción</span>
+    </label>
       <input
         type="search"
+        name="search-value"
         class="block w-full p-4 ps-10 text-sm border-2 rounded-full focus:ring-cyan-500 focus:ring-2
         bg-zinc-900 border-zinc-600 placeholder-gray-400 text-white focus:outline-none"
         placeholder="Promesas sobre el Bidet, 11 y 6, Rezo por vos ..."
         required
       />
-    </label>
 
     <button
-      hx-get="/api/songs"
+      hx-post="/api/songs"
       hx-target="#songs-results"
       hx-swap="innerHTML"
       hx-indicator=".lds-roller"
