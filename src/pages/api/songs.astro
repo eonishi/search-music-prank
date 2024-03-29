@@ -7,6 +7,7 @@ const search = formData.get('search-value')
 
 // Hacer la petición a la API con el valor de search (value del input) y obtener los datos
 const api_key = import.meta.env.API_KEY;
+console.log(api_key);
 const url = `https://spotify23.p.rapidapi.com/search/?q=${search}&type=tracks&offset=0&limit=10&numberOfTopResults=5`;
 const option = {
   method: "GET",
