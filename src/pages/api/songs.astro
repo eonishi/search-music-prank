@@ -16,13 +16,8 @@ const option = {
   }
 }
 
-  console.log("url", url);
-  console.log("option", option);
-
   const res = await fetch(url, option);
-  console.log("res", res);
   const data = await res.json();
-  console.log("data", data)
   const allSongs = data.tracks.items;
 
 ---
