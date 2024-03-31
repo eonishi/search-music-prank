@@ -14,10 +14,11 @@ import ImageState from "./ImageState";
 ---
 
 <div
+  id="song-card"
   class="flex justify-start items-center gap-4 px-2 py-1 rounded-xl
         bg-cyan-300/10 backdrop-blur-lg
         hover:bg-cyan-300/30
-        shadow-2xl opacity-0 song-effect"
+        shadow-2xl opacity-0"
 >
   <ImageState client:load cover={cover} tittle={tittle} artists={artists} />
 
@@ -32,8 +33,11 @@ import ImageState from "./ImageState";
 </div>
 
 <style define:vars={{ spawnDelay }}>
-  .song-effect {
-    animation: 0.6s ease-in-out forwards fade-in-up;
+  #song-card {
+    animation-name: fade-in-up;
+    animation-duration: 0.6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
     animation-delay: var(--spawnDelay);
   }
 
