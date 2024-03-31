@@ -24,7 +24,7 @@ const option = {
 
 {
   allSongs.map((song: any, index: number) => (
-    <Song client:load
+    <Song 
       tittle={song.data.name}
       artists={song.data.artists.items[0].profile.name}
       cover={song.data.albumOfTrack.coverArt.sources[0].url}
