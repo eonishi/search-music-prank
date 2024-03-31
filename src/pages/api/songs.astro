@@ -2,8 +2,8 @@
 import Song from "../../components/Song.astro";
 
 // Obtener el valor del input de búsqueda
-const formData = await Astro.request.formData()
-const search = formData.get('search-value')
+const formData = await Astro.request.formData();
+const search = formData.get("search-value");
 
 // Hacer la petición a la API con el valor de search (value del input) y obtener los datos
 const api_key = import.meta.env.API_KEY;
@@ -11,20 +11,25 @@ const url = `https://spotify23.p.rapidapi.com/search/?q=${search}&type=tracks&of
 const option = {
   method: "GET",
   headers: {
-    'X-RapidAPI-Key': api_key,
-    'X-RapidAPI-Host': 'spotify23.p.rapidapi.com',
-  }
-}
+    "X-RapidAPI-Key": api_key,
+    "X-RapidAPI-Host": "spotify23.p.rapidapi.com",
+  },
+};
 
+let allSongs: any;
+
+try {
   const res = await fetch(url, option);
   const data = await res.json();
-  const allSongs = data.tracks.items;
-
+  allSongs = data.tracks.items;
+} catch (error) {
+  return Astro.redirect("/error/api-fault");
+}
 ---
 
 {
   allSongs.map((song: any, index: number) => (
-    <Song 
+    <Song
       tittle={song.data.name}
       artists={song.data.artists.items[0].profile.name}
       cover={song.data.albumOfTrack.coverArt.sources[0].url}

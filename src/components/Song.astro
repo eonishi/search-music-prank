@@ -7,18 +7,18 @@ interface Props {
 }
 
 const { tittle, artists, cover, index } = Astro.props;
-const spawnDelay = `${index * 0.4}s`;
+const spawnDelay = `${(index * 0.4).toPrecision(2)}s`;
 
 import AnchorState from "./AnchorState";
 import ImageState from "./ImageState";
 ---
 
 <div
-  id="song-card"
-  class="flex justify-start items-center gap-4 px-2 py-1 rounded-xl
-        bg-cyan-300/10 backdrop-blur-lg
-        hover:bg-cyan-300/30
-        shadow-2xl opacity-0"
+  class=`song-effect flex justify-start items-center gap-4 px-2 py-1 rounded-xl
+  bg-cyan-300/10 backdrop-blur-lg
+  hover:bg-cyan-300/30
+  shadow-2xl opacity-0 animate-fade-in-up`
+  style=`animation-delay: ${spawnDelay} ;`
 >
   <ImageState client:load cover={cover} tittle={tittle} artists={artists} />
 
@@ -32,23 +32,4 @@ import ImageState from "./ImageState";
   </div>
 </div>
 
-<style define:vars={{ spawnDelay }}>
-  #song-card {
-    animation-name: fade-in-up;
-    animation-duration: 0.6s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-in-out;
-    animation-delay: var(--spawnDelay);
-  }
-
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>
+<style define:vars={{ spawnDelay }}></style>
